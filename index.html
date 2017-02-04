@@ -10,18 +10,28 @@
 	
 	<title>Hangman</title>
 	
-	<link rel="stylesheet" type="text/css" href="assest/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
 <header>
-	<h1>Psychic Game</h1>
+	<h1>Hangman</h1>
 </header>
+	<h2>Press any key to start!</h2>
+
 
 
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
+	<p>Wins <span id="wins">0</span></p>
+	<p>Losses <span id="losses">0</span></p>
+	<h4>Current Word</h4>
+	<h5 id="current-word">_ _ _ _ _ _</h5>
+	<p>Guesses Remaining <span id="guesses-left">15</span></p>
+	<p>Letter Guessed</p>
+	<p id="letters-guessed"></p>
+
 
 </body>
 </html>
