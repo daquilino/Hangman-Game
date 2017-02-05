@@ -3,27 +3,16 @@
 /*                game.js                      */
 	
 /*==================  notes REMOVE ==============================
-1.)string.indesOf(); use to check clue for "_" left.  **also check guessesLeft**
-		OR JUST COMPARE CLUE TO PRESIDENTS(PRESIDENTSINDEX)
 
-		i.e. if (clue.indexOf(_)<0){
-					wins++
-					some kind of win action
-					reset game.
-		}
-
-2.)string.endsWith();  used  for ST ND TD  ::: 11th is special case.
-
-3.)searchClue(): forEach(function(element){ code here });  use to check if letter is in ;
-
-4.)  do something with foundIndex after search(string)
+1.) display clue question  askQuestion();
+2.) win or lose reveal clue showAnswer();
 
 =========================================================*/
 
 	// Global Variable Declarations
 	var wins = 0;
 	var losses = 0;
-	var presidents = "washington ADAMS JEFFERSON MADISON".toUpperCase().split(" ");
+	var presidents = "washington ADAMS JEFFERSON MADISON Adams Jackson Buren Harrison Tyler Polk Taylor Fillmore Pierce Buchanan Lincoln Johnson Grant Hayes Garfield Arthur Cleveland Harrison Cleveland McKinley Roosevelt Taft Wilson Harding Hoover Roosevelt Truman Eisenhower Kennedy Johnson Nixon Ford Carter Reagan Bush Clinton Bush Obama Trump".toUpperCase().split(" ");
 	var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	var guessesLeft = 15;
 	var guessesMade = [];
@@ -39,10 +28,9 @@
 	// Event Handler. Monitors for 'key up'.
 	// Assigns playerGuess that key.		
 	// Error checks key is a letter.
-	// Calls showResults to display game results to player.
+	// 
 	
 	
-
 	document.onkeyup = function(element){
 		
 		playerGuess = event.key.toUpperCase();
@@ -58,6 +46,7 @@
 			presidentIndex = randomIndex(); 
 			answer = presidents[presidentIndex].split("");
 			setAnswerDisplay();
+			askQuestion();
 		}
 
 		guessesLeft--;
@@ -194,6 +183,38 @@ return 0;	//
 		}
 
 	}//END checkAnswer
+
+	function superscript(){
+	if((presidentIndex+1) == 11){
+			return th;
+		}
+		else if((presidentIndex+1).toString().endsWith("1")){
+			return "<sup>ST</sup>";
+		}
+		else if((presidentIndex+1).toString().endsWith("2")){
+
+			return "<sup>ND</sup>";
+		}
+		else if((presidentIndex+1).toString().endsWith("3")){
+			return "<sup>RD</sup>";
+		}	
+		return "<sup>TH</sup>";
+
+	}//END superscript
+
+	// displays answer
+	function showAnswer(){
+
+
+
+	}//END showAnswer
+
+	// displays Question
+	function askQuestion(){
+		x = document.querySelector("#clue");
+		x.innerHTML = "Who was the " + (presidentIndex+1) +superscript()+ " president of the United States";
+
+	}//END askQuestion
 
 	
 
